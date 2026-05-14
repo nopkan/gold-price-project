@@ -9,6 +9,7 @@ Hourly Airflow pipeline that ingests gold price data from GoldAPI into Supabase/
 - `sql/silver/` - Cleaned price observations.
 - `sql/gold/` - Hourly reporting mart.
 - `sql/setup_supabase_schema.py` - Optional schema bootstrap script.
+- `config/simple_auth_manager_passwords.json` - Airflow UI username/password config for this assignment.
 - `Containerfile` - Airflow Docker image definition.
 - `compose.yaml` - Local Docker Compose service for Airflow standalone.
 
@@ -51,10 +52,17 @@ The Airflow UI runs at:
 http://localhost:8080
 ```
 
-Show the generated standalone login details:
+Login:
+
+```text
+Username: admin
+Password: admin
+```
+
+To change the password, edit `config/simple_auth_manager_passwords.json`, then rebuild and recreate the container:
 
 ```zsh
-docker compose -f compose.yaml logs airflow | grep -E "Airflow is ready|Login with username|Airflow Standalone" | tail -n 20
+docker compose -f compose.yaml up --build -d --force-recreate
 ```
 
 Stop Airflow:
