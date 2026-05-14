@@ -1,0 +1,21 @@
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: Containerfile
+      args:
+        AIRFLOW_VERSION: "3.2.0"
+    container_name: goldprice-airflow
+    env_file:
+      - .env
+    environment:
+      AIRFLOW_HOME: /opt/airflow
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      GOLD_SQL_DIR: /opt/airflow/sql
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./sql:/opt/airflow/sql
+    command: standalone

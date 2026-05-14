@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+.airflow_venv/
+.airflow_home/
+
+# Airflow runtime
+logs/
+plugins/__pycache__/
+
+# macOS
+.DS_Store

@@ -1,0 +1,9 @@
+.airflow_home/
+.airflow_venv/
+.git/
+.venv/
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store
+logs/
